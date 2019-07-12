@@ -1,0 +1,36 @@
+@mixin tinted-background-img($url) {
+  background: linear-gradient(rgba($primary, 0.9), rgba($primary, 0.9)),
+    url($url);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin overlay($content) {
+  overflow: hidden;
+  &:after {
+    content: $content;
+    width: 100%;
+    height: 100%;
+    background: rgba(black, 0.5);
+    position: absolute;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+
+    img {
+      transform: scale(1.3);
+    }
+  }
+  img {
+    transition: all 0.5s ease;
+  }
+}
