@@ -21,8 +21,7 @@ const Carousel = () => {
 
   // rotate slides left by n spaces: e.g. 2 spaces - [1, 2, 3, 4, 5] -> [3, 4, 5, 1, 2]
   const rotateLeft = (spaces = 1) => {
-    const s = slideOrder.map((_, i) => slideOrder[(i + spaces) % slideOrder.length]
-    );
+    const s = slideOrder.map((_, i) => slideOrder[(i + spaces) % slideOrder.length]);
 
     setSelectedIdx((selectedIdx + spaces) % 5);
     rotate(s[0], s[1], s[2], s[3], s[4]);
