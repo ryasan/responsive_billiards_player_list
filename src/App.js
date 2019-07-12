@@ -6,7 +6,7 @@ import HomePage from './pages/home';
 import DetailsPage from './pages/details';
 
 const App = () => (
-  <BrowserRouter basename="/mirum_assignment">
+  <BrowserRouter basename="/responsive_billiards_player_list">
     <Switch>
       <Route path="/" exact component={HomePage} />
       <Route path="/details" component={DetailsPage} />
