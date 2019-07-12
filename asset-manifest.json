@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/responsive_billiards_player_list/static/css/main.5da86457.chunk.css",
+    "main.js": "/responsive_billiards_player_list/static/js/main.96a91196.chunk.js",
+    "main.js.map": "/responsive_billiards_player_list/static/js/main.96a91196.chunk.js.map",
+    "runtime~main.js": "/responsive_billiards_player_list/static/js/runtime~main.7a039b56.js",
+    "runtime~main.js.map": "/responsive_billiards_player_list/static/js/runtime~main.7a039b56.js.map",
+    "static/js/2.5820c06d.chunk.js": "/responsive_billiards_player_list/static/js/2.5820c06d.chunk.js",
+    "static/js/2.5820c06d.chunk.js.map": "/responsive_billiards_player_list/static/js/2.5820c06d.chunk.js.map",
+    "index.html": "/responsive_billiards_player_list/index.html",
+    "precache-manifest.83d1671aff808d20d26768513266d3c5.js": "/responsive_billiards_player_list/precache-manifest.83d1671aff808d20d26768513266d3c5.js",
+    "service-worker.js": "/responsive_billiards_player_list/service-worker.js",
+    "static/css/main.5da86457.chunk.css.map": "/responsive_billiards_player_list/static/css/main.5da86457.chunk.css.map"
+  }
+}
