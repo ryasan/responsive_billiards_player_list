@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/responsive_billiards_player_list/precache-manifest.83d1671aff808d20d26768513266d3c5.js"
+  "/responsive_billiards_player_list/precache-manifest.974b146d84be14783c7567fea61acc66.js"
 );
 
 self.addEventListener('message', (event) => {
