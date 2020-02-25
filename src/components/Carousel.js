@@ -8,7 +8,8 @@ const Carousel = () => {
   const [slideOrder, setSlideOrder] = useState(['s4', 's5', 's1', 's2', 's3']);
   const [slideStyles, setSlideStyles] = useState({});
 
-  const rotate = (s1, s2, s3, s4, s5) => {
+  const rotate = (slides) => {
+    const [s1, s2, s3, s4, s5] = slides
     setSlideStyles({
       [s1]: { transform: 'translateX(-60rem)', opacity: 0 },
       [s2]: { transform: 'translateX(-30rem)', opacity: 1 },
@@ -16,7 +17,7 @@ const Carousel = () => {
       [s4]: { transform: 'translateX(30rem)', opacity: 1 },
       [s5]: { transform: 'translateX(60rem)', opacity: 0 },
     });
-    setSlideOrder([s1, s2, s3, s4, s5]);
+    setSlideOrder(slides);
   };
 
   // rotate slides left by n spaces: e.g. 2 spaces - [1, 2, 3, 4, 5] -> [3, 4, 5, 1, 2]
@@ -24,7 +25,7 @@ const Carousel = () => {
     const s = slideOrder.map((_, i) => slideOrder[(i + spaces) % slideOrder.length]);
 
     setSelectedIdx((selectedIdx + spaces) % 5);
-    rotate(s[0], s[1], s[2], s[3], s[4]);
+    rotate(s);
   };
 
   // rotate slides right by n spaces: e.g. 2 spaces - [1, 2, 3, 4, 5] -> [4, 5, 1, 2, 3]
@@ -35,7 +36,7 @@ const Carousel = () => {
     }, []);
 
     setSelectedIdx(4 - ((4 - selectedIdx + spaces) % 5));
-    rotate(s[0], s[1], s[2], s[3], s[4]);
+    rotate(s);
   };
 
   const handleDotClick = idx => {
