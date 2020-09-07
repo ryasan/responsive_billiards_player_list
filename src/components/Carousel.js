@@ -28,13 +28,13 @@ const Carousel = () => {
     const [step, setStep] = useState(0)
     const [isTicking, setIsTicking] = useState(false)
 
-    const handleLeftClick = (jump = 1) => {
+    const handleLeftClick = () => {
         if (!isTicking) {
             setIsTicking(true)
-            setStep(prev => (prev + jump + items.length) % 5)
+            setStep(prev => (prev + 1 + items.length) % 5)
             setItems(items =>
                 items.map((item, i) => {
-                    const xPos = (i + step + jump) % 5
+                    const xPos = (i + step + 1) % 5
                     return {
                         ...item,
                         styles: {
@@ -48,10 +48,10 @@ const Carousel = () => {
         }
     }
 
-    const handleRightClick = (jump = 1) => {
+    const handleRightClick = () => {
         if (!isTicking) {
             setIsTicking(true)
-            setStep(prev => (prev - jump + items.length) % 5)
+            setStep(prev => (prev - 1 + items.length) % 5)
             setItems(items =>
                 items.map((item, i) => {
                     const xPos = (i + step + items.length - 1) % 5
@@ -81,7 +81,7 @@ const Carousel = () => {
             <div className='carousel__inner'>
                 <button
                     className='carousel__btn carousel__btn--prev'
-                    onClick={() => handleLeftClick()}>
+                    onClick={handleLeftClick}>
                     <i className='carousel__btn-arrow carousel__btn-arrow--left' />
                 </button>
                 <div className='carousel__container'>
@@ -93,7 +93,7 @@ const Carousel = () => {
                 </div>
                 <button
                     className='carousel__btn carousel__btn--next'
-                    onClick={() => handleRightClick()}>
+                    onClick={handleRightClick}>
                     <i className='carousel__btn-arrow carousel__btn-arrow--right' />
                 </button>
                 <div className='carousel__dots'>
@@ -102,7 +102,7 @@ const Carousel = () => {
                             key={i}
                             className={step === i ? 'dot active' : 'dot'}
                         />
-                    ))}
+                    )).reverse()}
                 </div>
             </div>
         </div>
