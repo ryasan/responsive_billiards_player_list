@@ -5,17 +5,18 @@
 
 // ============= Global ============= //
 html {
-  box-sizing: border-box;
-  font-size: 10px;
-  @media (max-width: $mobileL) {
-    font-size: 8px;
-  }
+    box-sizing: border-box;
+    font-size: 10px;
+
+    @media (max-width: $mobileL) {
+        font-size: 8px;
+    }
 }
 
 body {
-  font-size: 1.5rem;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 // * {
@@ -23,63 +24,64 @@ body {
 // }
 
 *,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  box-sizing: inherit;
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    color: inherit;
+    text-decoration: none;
 }
 
 .page {
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: $footerHeight;
+    min-height: 100vh;
+    padding-bottom: $footerHeight;
+    position: relative;
 }
 
 header {
-  color: $white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0 5rem;
+    align-items: center;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    padding: 0 5rem;
+    width: 100%;
 
-  .inner {
-    text-align: center;
-    max-width: $maxWidth;
-    h1 {
-      margin: 0;
+    .inner {
+        max-width: $maxWidth;
+        text-align: center;
+
+        h1 {
+            margin: 0;
+        }
     }
-  }
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: $footerHeight;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: $black;
-  @media (max-width: $tablet) {
-    padding: 0 2rem;
-  }
-
-  .inner {
-    padding: 1rem 0;
+    align-items: center;
+    background: $black;
+    bottom: 0;
+    display: flex;
+    height: $footerHeight;
+    justify-content: center;
+    position: absolute;
     width: 100%;
-    max-width: $maxWidth;
-    color: $white;
-    font-size: 1.2rem;
-  }
+
+    @media (max-width: $tablet) {
+        padding: 0 2rem;
+    }
+
+    .inner {
+        color: $white;
+        font-size: 1.2rem;
+        max-width: $maxWidth;
+        padding: 1rem 0;
+        width: 100%;
+    }
 }

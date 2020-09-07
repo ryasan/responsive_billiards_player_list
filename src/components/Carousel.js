@@ -1,87 +1,110 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, createRef } from 'react'
+import { NavLink } from 'react-router-dom'
 
-import slides from '../data.js';
-import CarouselSlideItem from './CarouselSlideItem.js';
+import _items from '../data'
+
+const CarouselSlideItem = ({ item }) => (
+    <li className='carousel__slide-item' style={item.styles}>
+        <NavLink
+            to={{
+                pathname: '/details',
+                search: `?player=${item.player.title}`,
+                state: item
+            }}
+            className='carousel__slide-item-img-link'>
+            <img src={item.player.image} />
+        </NavLink>
+        <div className='carousel-slide-item__body'>
+            <h4>{item.player.title}</h4>
+            <p>{item.player.desc}</p>
+        </div>
+    </li>
+)
+
+const cycle = ['0', '30rem', '60rem', '90rem', '120rem']
 
 const Carousel = () => {
-  const [selectedIdx, setSelectedIdx] = useState(0);
-  const [slideOrder, setSlideOrder] = useState(['s4', 's5', 's1', 's2', 's3']);
-  const [slideStyles, setSlideStyles] = useState({});
+    const [items, setItems] = useState(_items)
+    const [step, setStep] = useState(0)
+    const [isTicking, setIsTicking] = useState(false)
 
-  const rotate = (slides) => {
-    const [s1, s2, s3, s4, s5] = slides
-    setSlideStyles({
-      [s1]: { transform: 'translateX(-60rem)', opacity: 0 },
-      [s2]: { transform: 'translateX(-30rem)', opacity: 1 },
-      [s3]: { transform: 'translateX(0)', opacity: 1 },
-      [s4]: { transform: 'translateX(30rem)', opacity: 1 },
-      [s5]: { transform: 'translateX(60rem)', opacity: 0 },
-    });
-    setSlideOrder(slides);
-  };
-
-  // rotate slides left by n spaces: e.g. 2 spaces - [1, 2, 3, 4, 5] -> [3, 4, 5, 1, 2]
-  const rotateLeft = (spaces = 1) => {
-    const s = slideOrder.map((_, i) => slideOrder[(i + spaces) % slideOrder.length]);
-
-    setSelectedIdx((selectedIdx + spaces) % 5);
-    rotate(s);
-  };
-
-  // rotate slides right by n spaces: e.g. 2 spaces - [1, 2, 3, 4, 5] -> [4, 5, 1, 2, 3]
-  const rotateRight = (spaces = 1) => {
-    const s = slideOrder.reduce((result, slide, i) => {
-      result[(i + spaces) % slideOrder.length] = slide;
-      return result;
-    }, []);
-
-    setSelectedIdx(4 - ((4 - selectedIdx + spaces) % 5));
-    rotate(s);
-  };
-
-  const handleDotClick = idx => {
-    if (idx > selectedIdx) {
-      rotateLeft(idx - selectedIdx);
-    } else if (idx < selectedIdx) {
-      rotateRight(selectedIdx - idx);
+    const handleLeftClick = () => {
+        if (!isTicking) {
+            setIsTicking(true)
+            setStep(prev => (prev + 1 + items.length) % 5)
+            setItems(items =>
+                items.map((item, i) => {
+                    const xPos = (i + step + 1) % 5
+                    return {
+                        ...item,
+                        styles: {
+                            transform: `translateX(${cycle[xPos]})`,
+                            opacity: xPos === 0 || xPos === 4 ? 0 : 1,
+                            filter:
+                                xPos === 1 || xPos === 3
+                                    ? 'grayscale(1)'
+                                    : 'initial'
+                        }
+                    }
+                })
+            )
+        }
     }
-  };
 
-  return (
-    <div className="carousel-wrap">
-      <div className="carousel-container">
-        <button className="carousel-btn prev-btn" onClick={() => rotateLeft()}>
-          <i className="carousel-btn__arrow left" />
-        </button>
-        <ul className="carousel-slide-list">
-          {slides.map((slide, i) => (
-            <CarouselSlideItem
-              key={slide.id}
-              slide={slide}
-              style={slideStyles[`s${slide.id}`]}
-              active={selectedIdx === i}
-              className={`carousel-slide-item s${slide.id}`}
-            />
-          ))}
-        </ul>
-        <button className="carousel-btn next-btn" onClick={() => rotateRight()}>
-          <i className="carousel-btn__arrow right" />
-        </button>
-      </div>
-      <div className="carousel-dots">
-        {slides.map((_, i) => {
-          const className = selectedIdx === i ? 'dot active' : 'dot';
-          return (
-            <button
-              key={i}
-              className={className}
-              onClick={() => handleDotClick(i)}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-};
+    const handleRightClick = () => {
+        if (!isTicking) {
+            setIsTicking(true)
+            setStep(prev => (prev - 1 + items.length) % 5)
+            setItems(items =>
+                items.map((item, i) => {
+                    const xPos = (i + step + items.length - 1) % 5
+                    return {
+                        ...item,
+                        styles: {
+                            transform: `translateX(${cycle[xPos]})`,
+                            opacity: xPos === 0 || xPos === 4 ? 0 : 1,
+                            filter:
+                                xPos === 1 || xPos === 3
+                                    ? 'grayscale(1)'
+                                    : 'initial'
+                        }
+                    }
+                })
+            )
+        }
+    }
 
-export default Carousel;
+    useEffect(() => {
+        if (isTicking) {
+            setTimeout(() => {
+                setIsTicking(false)
+            }, 300)
+        }
+    }, [isTicking])
+
+    return (
+        <div className='carousel__wrap'>
+            <div className='carousel__inner'>
+                <button
+                    className='carousel__btn carousel__btn--prev'
+                    onClick={handleLeftClick}>
+                    <i className='carousel__btn-arrow carousel__btn-arrow--left' />
+                </button>
+                <div className='carousel__container'>
+                    <ul className='carousel__slide-list'>
+                        {items.map((item, i) => (
+                            <CarouselSlideItem key={i} item={item} />
+                        ))}
+                    </ul>
+                </div>
+                <button
+                    className='carousel__btn carousel__btn--next'
+                    onClick={handleRightClick}>
+                    <i className='carousel__btn-arrow carousel__btn-arrow--right' />
+                </button>
+            </div>
+        </div>
+    )
+}
+
+export default Carousel

@@ -1,0 +1,17 @@
+{
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-sass-guidelines"
+    ],
+    "rules": {
+        "color-named": "always-where-possible",
+        "no-missing-end-of-source-newline": null,
+        "function-parentheses-space-inside": null,
+        "selector-class-pattern": null,
+        "indentation": 4,
+        "declaration-block-semicolon-newline-after": null,
+        "max-nesting-depth": 2,
+        "selector-max-id": null,
+        "value-keyword-case": null
+    }
+}

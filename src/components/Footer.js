@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 const Footer = () => (
-  <footer>
-    <div className="inner">@ {new Date().getFullYear()}</div>
-  </footer>
-);
+    <footer>
+        <div className='inner'>@ {new Date().getFullYear()}</div>
+    </footer>
+)
 
-export default Footer;
+export default Footer
