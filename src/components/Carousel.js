@@ -28,22 +28,19 @@ const Carousel = () => {
     const [step, setStep] = useState(0)
     const [isTicking, setIsTicking] = useState(false)
 
-    const handleLeftClick = () => {
+    const handleLeftClick = (jump = 1) => {
         if (!isTicking) {
             setIsTicking(true)
-            setStep(prev => (prev + 1 + items.length) % 5)
+            setStep(prev => (prev + jump + items.length) % 5)
             setItems(items =>
                 items.map((item, i) => {
-                    const xPos = (i + step + 1) % 5
+                    const xPos = (i + step + jump) % 5
                     return {
                         ...item,
                         styles: {
                             transform: `translateX(${cycle[xPos]})`,
                             opacity: xPos === 0 || xPos === 4 ? 0 : 1,
-                            filter:
-                                xPos === 1 || xPos === 3
-                                    ? 'grayscale(1)'
-                                    : 'initial'
+                            filter: xPos === 1 || xPos === 3 ? 'grayscale(1)' : 'initial' //prettier-ignore
                         }
                     }
                 })
@@ -51,10 +48,10 @@ const Carousel = () => {
         }
     }
 
-    const handleRightClick = () => {
+    const handleRightClick = (jump = 1) => {
         if (!isTicking) {
             setIsTicking(true)
-            setStep(prev => (prev - 1 + items.length) % 5)
+            setStep(prev => (prev - jump + items.length) % 5)
             setItems(items =>
                 items.map((item, i) => {
                     const xPos = (i + step + items.length - 1) % 5
@@ -63,10 +60,7 @@ const Carousel = () => {
                         styles: {
                             transform: `translateX(${cycle[xPos]})`,
                             opacity: xPos === 0 || xPos === 4 ? 0 : 1,
-                            filter:
-                                xPos === 1 || xPos === 3
-                                    ? 'grayscale(1)'
-                                    : 'initial'
+                            filter: xPos === 1 || xPos === 3 ? 'grayscale(1)' : 'initial' // prettier-ignore
                         }
                     }
                 })
@@ -87,7 +81,7 @@ const Carousel = () => {
             <div className='carousel__inner'>
                 <button
                     className='carousel__btn carousel__btn--prev'
-                    onClick={handleLeftClick}>
+                    onClick={() => handleLeftClick()}>
                     <i className='carousel__btn-arrow carousel__btn-arrow--left' />
                 </button>
                 <div className='carousel__container'>
@@ -99,9 +93,17 @@ const Carousel = () => {
                 </div>
                 <button
                     className='carousel__btn carousel__btn--next'
-                    onClick={handleRightClick}>
+                    onClick={() => handleRightClick()}>
                     <i className='carousel__btn-arrow carousel__btn-arrow--right' />
                 </button>
+                <div className='carousel__dots'>
+                    {items.map((_, i) => (
+                        <button
+                            key={i}
+                            className={step === i ? 'dot active' : 'dot'}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     )
