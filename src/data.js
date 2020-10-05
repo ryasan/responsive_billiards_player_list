@@ -42,7 +42,6 @@ const items = [
     },
     {
         id: 3,
-
         player: {
             title: 'Shane Van Boening',
             desc:
@@ -64,7 +63,6 @@ const items = [
     },
     {
         id: 4,
-
         player: {
             title: 'Mike Sigel',
             desc: `Mike Sigel or "Captain Hook" as many like to call him is an American professional pool player with over 108 tournament wins.`,

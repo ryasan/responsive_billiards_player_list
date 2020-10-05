@@ -1,4 +1,5 @@
-$slide-length: 5;
+$slide-count: 5;
+$slide-width: 29.6rem;
 
 .home-page {
     display: flex;
@@ -35,7 +36,7 @@ $slide-length: 5;
 
 .carousel__container {
     height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
     width: 100%;
 }
@@ -48,7 +49,14 @@ $slide-length: 5;
     padding: 0;
     position: absolute;
     transform: translateX(-50%);
-    width: calc(#{$slide-length} * 29.6rem);
+
+    &.odd {
+        width: calc(#{$slide-count * $slide-width});
+    }
+
+    &.even {
+        width: calc(#{$slide-count * $slide-width + $slide-width});
+    }
 }
 
 .carousel__slide-item {
@@ -115,7 +123,7 @@ $slide-length: 5;
 }
 
 .carousel__btn-arrow {
-    border: solid black;
+    border: solid cyan;
     border-width: 0 0.4rem 0.4rem 0;
     height: 6rem;
     padding: 3px;
