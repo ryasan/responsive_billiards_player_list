@@ -1,10 +1,6 @@
 const items = [
     {
         id: 1,
-        styles: {
-            transform: 'translateX(0)',
-            opacity: 0
-        },
         player: {
             title: 'Efren Reyes',
             desc:
@@ -26,10 +22,6 @@ const items = [
     },
     {
         id: 2,
-        styles: {
-            transform: 'translateX(30rem)',
-            filter: 'grayscale(1)'
-        },
         player: {
             title: `Ronnie O'Sullivan`,
             desc: `Ronnie O'Sullivan professional snooker player who is widely regarded as one of the greatest players in the history of the discipline.`,
@@ -50,9 +42,7 @@ const items = [
     },
     {
         id: 3,
-        styles: {
-            transform: 'translateX(60rem)'
-        },
+
         player: {
             title: 'Shane Van Boening',
             desc:
@@ -74,10 +64,7 @@ const items = [
     },
     {
         id: 4,
-        styles: {
-            transform: 'translateX(90rem)',
-            filter: 'grayscale(1)'
-        },
+
         player: {
             title: 'Mike Sigel',
             desc: `Mike Sigel or "Captain Hook" as many like to call him is an American professional pool player with over 108 tournament wins.`,
@@ -100,11 +87,6 @@ const items = [
     },
     {
         id: 5,
-        styles: {
-            transform: 'translateX(120rem)',
-            opacity: 0,
-            filter: 'grayscale(1)'
-        },
         player: {
             title: 'Willie Mosconi',
             desc:
@@ -125,6 +107,5 @@ const items = [
         }
     }
 ]
-
 
 export default items

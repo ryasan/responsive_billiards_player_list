@@ -1,3 +1,5 @@
+$slide-length: 5;
+
 .home-page {
     display: flex;
     flex-direction: column;
@@ -46,7 +48,7 @@
     padding: 0;
     position: absolute;
     transform: translateX(-50%);
-    width: calc(5 * 30rem);
+    width: calc(#{$slide-length} * 29.6rem);
 }
 
 .carousel__slide-item {
@@ -56,10 +58,6 @@
     top: 2rem;
     transition: all 0.3s;
     width: 28rem;
-
-    // &:not(:nth-child(3)) {
-    //     filter: grayscale(1);
-    // }
 }
 
 .carousel__slide-item-img-link {
