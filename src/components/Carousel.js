@@ -53,7 +53,11 @@ const CarouselSlideItem = ({ pos, idx }) => {
     )
 }
 
-const keys = Array.from(Array(_items.length).keys())
+// const keys = Array.from(Array(_items.length).keys())
+
+const keys = Array.from({ length: _items.length }, (item, i) => (i + half) % _items.length)
+
+// console.log(keys2)
 
 const Carousel = () => {
     const [items, setItems] = useState(keys)

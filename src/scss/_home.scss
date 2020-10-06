@@ -1,10 +1,10 @@
-$slide-count: 5;
+$slide-count: 4;
 $slide-width: 30rem;
 
 .home-page {
     display: flex;
     flex-direction: column;
-    // overflow: hidden;
+    overflow: hidden;
     position: relative;
 
     footer .inner {
