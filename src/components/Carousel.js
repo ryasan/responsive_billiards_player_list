@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 import _items from '../data'
 
+const slideWidth = 30
 const initialLength = _items.length
 const half = Math.floor(initialLength / 2)
 
@@ -10,7 +11,7 @@ if (initialLength < 5) _items.push(..._items)
 
 const createItem = (pos, idx) => {
     const item = {
-        styles: { transform: `translateX(${pos * 30}rem)` },
+        styles: { transform: `translateX(${pos * slideWidth}rem)` },
         player: _items[idx].player,
         pos: pos
     }
@@ -56,7 +57,6 @@ const keys = Array.from(Array(_items.length).keys())
 
 const Carousel = () => {
     const [items, setItems] = useState(keys)
-    const [step, setStep] = useState(0)
     const [isTicking, setIsTicking] = useState(false)
     const len = items.length
 

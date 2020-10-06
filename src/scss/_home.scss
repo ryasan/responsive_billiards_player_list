@@ -1,10 +1,10 @@
 $slide-count: 5;
-$slide-width: 29.6rem;
+$slide-width: 30rem;
 
 .home-page {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
 
     footer .inner {
@@ -31,12 +31,12 @@ $slide-width: 29.6rem;
 .carousel__inner {
     height: 40rem;
     position: relative;
-    width: 70rem;
+    width: calc(#{$slide-width * 3});
 }
 
 .carousel__container {
     height: 100%;
-    // overflow: hidden;
+    overflow: hidden;
     position: relative;
     width: 100%;
 }
@@ -60,12 +60,12 @@ $slide-width: 29.6rem;
 }
 
 .carousel__slide-item {
-    height: 30rem;
+    height: $slide-width;
     margin: 0;
+    padding: 1rem;
     position: absolute;
-    top: 2rem;
     transition: all 0.3s;
-    width: 28rem;
+    width: $slide-width;
 }
 
 .carousel__slide-item-img-link {
@@ -73,8 +73,8 @@ $slide-width: 29.6rem;
 
     cursor: zoom-in;
     display: flex;
-    height: 25rem;
     height: 100%;
+    position: relative;
     width: 100%;
 
     img {
@@ -111,7 +111,6 @@ $slide-width: 29.6rem;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
 
     &--prev {
         left: -20rem;
@@ -123,7 +122,7 @@ $slide-width: 29.6rem;
 }
 
 .carousel__btn-arrow {
-    border: solid cyan;
+    border: solid $black;
     border-width: 0 0.4rem 0.4rem 0;
     height: 6rem;
     padding: 3px;
