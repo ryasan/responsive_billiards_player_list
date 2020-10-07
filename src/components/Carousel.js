@@ -5,7 +5,12 @@ import _items from '../data'
 
 const slideWidth = 30
 const initialLength = _items.length
-const half = Math.floor(initialLength / 2)
+const middle = arr => Math.floor(arr.length / 2)
+const activeIdx = middle(_items)
+
+const sleep = (ms = 0) => {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 if (initialLength < 5) _items.push(..._items)
 
@@ -17,11 +22,11 @@ const createItem = (pos, idx) => {
     }
 
     switch (pos) {
-        case half - 1:
-        case half + 1:
+        case activeIdx - 1:
+        case activeIdx + 1:
             item.styles = { ...item.styles, filter: 'grayscale(1)' }
             break
-        case half:
+        case activeIdx:
             break
         default:
             item.styles = { ...item.styles, opacity: 0 }
@@ -53,38 +58,43 @@ const CarouselSlideItem = ({ pos, idx }) => {
     )
 }
 
-// const keys = Array.from(Array(_items.length).keys())
-
-const keys = Array.from({ length: _items.length }, (item, i) => (i + half) % _items.length)
-
-// console.log(keys2)
+const keys = Array.from(
+    { length: _items.length },
+    (item, i) => (i + activeIdx) % _items.length
+)
 
 const Carousel = () => {
     const [items, setItems] = useState(keys)
     const [isTicking, setIsTicking] = useState(false)
+    const [currentIdx, setCurrentIdx] = useState(0)
     const len = items.length
 
-    const handleLeftClick = () => {
+    const handlePrevClick = (jump = 1) => {
         if (!isTicking) {
             setIsTicking(true)
-            setItems(prev => [...prev.slice(1), prev[0]])
+            setItems(prev => prev.map((_, i) => prev[(i + jump) % len]))
         }
     }
 
-    const handleRightClick = () => {
+    const handleNextClick = (jump = 1) => {
         if (!isTicking) {
             setIsTicking(true)
-            setItems(prev => [prev[len - 1], ...prev.slice(0, len - 1)])
+            setItems(prev => prev.map((_, i) => prev[(i - jump + len) % len]))
         }
+    }
+
+    const handleDotClick = idx => {
+        if (idx < currentIdx) handleNextClick(currentIdx - idx)
+        if (idx > currentIdx) handlePrevClick(idx - currentIdx)
     }
 
     useEffect(() => {
-        if (isTicking) {
-            setTimeout(() => {
-                setIsTicking(false)
-            }, 300)
-        }
+        if (isTicking) sleep(300).then(() => setIsTicking(false))
     }, [isTicking])
+
+    useEffect(() => {
+        setCurrentIdx(items[middle(items)])
+    }, [items])
 
     const classes = [
         'carousel__slide-list',
@@ -98,7 +108,7 @@ const Carousel = () => {
             <div className='carousel__inner'>
                 <button
                     className='carousel__btn carousel__btn--prev'
-                    onClick={handleLeftClick}>
+                    onClick={() => handlePrevClick()}>
                     <i className='carousel__btn-arrow carousel__btn-arrow--left' />
                 </button>
                 <div className='carousel__container'>
@@ -110,18 +120,22 @@ const Carousel = () => {
                 </div>
                 <button
                     className='carousel__btn carousel__btn--next'
-                    onClick={handleRightClick}>
+                    onClick={() => handleNextClick()}>
                     <i className='carousel__btn-arrow carousel__btn-arrow--right' />
                 </button>
                 <div className='carousel__dots'>
-                    {items.slice(0, initialLength).map((pos, i) => (
-                        <button
-                            key={i}
-                            className={
-                                pos % initialLength === 2 ? 'dot active' : 'dot'
-                            }
-                        />
-                    ))}
+                    {items
+                        .slice(0, initialLength)
+                        .map((pos, i) => (
+                            <button
+                                key={i}
+                                onClick={() => handleDotClick(i)}
+                                className={
+                                    i === currentIdx ? 'dot active' : 'dot'
+                                }
+                            />
+                        ))
+                        .reverse()}
                 </div>
             </div>
         </div>

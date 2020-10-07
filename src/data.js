@@ -1,25 +1,25 @@
 const items = [
-    // {
-    //     id: 1,
-    //     player: {
-    //         title: 'Efren Reyes',
-    //         desc:
-    //             'Known as "The Magician", Efren Reyes is well regarded by many professionals as the greatest all around player of all time.',
-    //         summary: [
-    //             'Efren Manalang Reyes, OLD, PLH (born August 26, 1954), nicknamed the Magician and Bata, is a Filipino professional pool player. A winner of over 70 international titles, Reyes was the first player to win world championships in two different disciplines in pool. Among his numerous titles Reyes is a four-time World Eight-ball Champion, the 1999 WPA World Nine-ball Champion, a three-time US Open winner, a two-time World Pool League winner and a 14-time Derby City Classic winner – including an unprecedented five Master of the Table crowns. By defeating Earl Strickland in the inaugural Color of Money event in 1996, Reyes took home the largest single event purse in pool history. Many analysts, fans, and current and former players consider Reyes to be the greatest pool player of all time.',
-    //             'Gambling from a young age, Reyes played three cushion billiards in the 1960s and 1970s. After establishing himself as a winner, he was discovered by promoters. This gave him the opportunity to compete in big-time tournaments.',
-    //             `Numerous fellow professional players have credited Reyes with being the greatest living player in the world. During ESPN television commentary on a semi-finals match between Reyes and Mika Immonen at the 2000 Billiard Congress of America Open 9-Ball Championship, veteran professional Billy Incardona stated that Reyes was "indisputably the best player in the world—especially when you consider all games—he can play any game as well as anyone, maybe better than anyone.... In my opinion we're watching probably the greatest player in my lifetime and I've been watching pool for the better part of forty years."`
-    //         ],
-    //         image: 'https://i.postimg.cc/RhYnBf5m/er-slider.jpg',
-    //         gallery: [
-    //             'https://i.postimg.cc/cCC82hzT/er-2.jpg',
-    //             'https://i.postimg.cc/X7kHcYb8/er-3.jpg',
-    //             'https://i.postimg.cc/RZKJkNPr/er-1.jpg',
-    //             'https://i.postimg.cc/Yq4WxXYC/er-4.jpg',
-    //             'https://i.postimg.cc/05XSDg64/er-5.jpg'
-    //         ]
-    //     }
-    // },
+    {
+        id: 1,
+        player: {
+            title: 'Efren Reyes',
+            desc:
+                'Known as "The Magician", Efren Reyes is well regarded by many professionals as the greatest all around player of all time.',
+            summary: [
+                'Efren Manalang Reyes, OLD, PLH (born August 26, 1954), nicknamed the Magician and Bata, is a Filipino professional pool player. A winner of over 70 international titles, Reyes was the first player to win world championships in two different disciplines in pool. Among his numerous titles Reyes is a four-time World Eight-ball Champion, the 1999 WPA World Nine-ball Champion, a three-time US Open winner, a two-time World Pool League winner and a 14-time Derby City Classic winner – including an unprecedented five Master of the Table crowns. By defeating Earl Strickland in the inaugural Color of Money event in 1996, Reyes took home the largest single event purse in pool history. Many analysts, fans, and current and former players consider Reyes to be the greatest pool player of all time.',
+                'Gambling from a young age, Reyes played three cushion billiards in the 1960s and 1970s. After establishing himself as a winner, he was discovered by promoters. This gave him the opportunity to compete in big-time tournaments.',
+                `Numerous fellow professional players have credited Reyes with being the greatest living player in the world. During ESPN television commentary on a semi-finals match between Reyes and Mika Immonen at the 2000 Billiard Congress of America Open 9-Ball Championship, veteran professional Billy Incardona stated that Reyes was "indisputably the best player in the world—especially when you consider all games—he can play any game as well as anyone, maybe better than anyone.... In my opinion we're watching probably the greatest player in my lifetime and I've been watching pool for the better part of forty years."`
+            ],
+            image: 'https://i.postimg.cc/RhYnBf5m/er-slider.jpg',
+            gallery: [
+                'https://i.postimg.cc/cCC82hzT/er-2.jpg',
+                'https://i.postimg.cc/X7kHcYb8/er-3.jpg',
+                'https://i.postimg.cc/RZKJkNPr/er-1.jpg',
+                'https://i.postimg.cc/Yq4WxXYC/er-4.jpg',
+                'https://i.postimg.cc/05XSDg64/er-5.jpg'
+            ]
+        }
+    },
     {
         id: 2,
         player: {
