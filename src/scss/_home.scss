@@ -49,17 +49,11 @@ $slide-width: 30rem;
     padding: 0;
     position: absolute;
     transform: translateX(-50%);
-
-    &.odd {
-        width: calc(#{$slide-count * $slide-width});
-    }
-
-    &.even {
-        width: calc(#{$slide-count * $slide-width + $slide-width});
-    }
+    width: calc(#{($slide-count + 0.5) * $slide-width * 2});
 }
 
 .carousel__slide-item {
+    display: inline-block;
     height: $slide-width;
     margin: 0;
     padding: 1rem;
